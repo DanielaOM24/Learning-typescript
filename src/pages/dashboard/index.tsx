@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <main className="main-container">
       <h1>HELLO! ✨</h1>
-      <h2>Mi first page with next and Typescript 🤍</h2>
+      <h2>welcome the eccomerce  🤍</h2>
       <div>{result}</div>
       <button
         onClick={() => {
