@@ -4,8 +4,8 @@ interface user {
 }
 
 export const users: user[] = [
-    {name:"sebastian", password:"cacorro123"},
-    {name:"juan pablo", password:"pitocorto321"},
-    {name:"susana", password:"perrita123"},
-    {name:"daniela", password:"hermosa123"},
+    {name:"sebastian", password:"sebas123"},
+    {name:"juan pablo", password:"pablo321"},
+    {name:"susana", password:"susi123"},
+    {name:"daniela", password:"dani123"},
 ]

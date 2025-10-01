@@ -1,20 +1,27 @@
-export interface Price{
-    amount:number;
-    currency: 'COP' | 'USD'
-}
 
-export interface Product{
-    id: string;
+export interface Dimensions {
+    width: number;
+    height: number;
+    depth: number;
+    weight?: number; 
+  }
+  
+
+  export interface Product {
     name: string;
     brand: string;
-    quantity : number;
-    price : number;
+    quantity: number;
+    price: number;
+    currency: "COP" | "USD";
     isActive: boolean;
-    specs?:{
-        color?: string;
-        size?: string;
-        material?: string
-    };
-    
-
-}
+  
+ //other propierties
+    category: string;
+    imageUrl: string;
+    createdAt: Date;
+    tags?: string[];
+  
+   
+    dimensions?: Dimensions;
+  }
+  
