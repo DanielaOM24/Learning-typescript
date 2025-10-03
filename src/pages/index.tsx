@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { users } from "../utils/users";
 import { ToastContainer, toast } from 'react-toastify';
 import { MiButton } from "@/components/button/Button";
+import { useState } from "react";
+
 
 const Login = () => {
     const [user, setUser] = useState("");
@@ -72,44 +73,6 @@ const Login = () => {
 export default Login;
 
 
-//genericos
-
-const arrayNum = [2,5,9,8,7,4];
-const arrayStr = ["B","c","5","p"];
-const arrayBln =[true, false];
-
-//devuleva el 1 elemento de un array
-const returnFirstElement = <T,> (array:T[]):T =>{
-    return array[0];
-}
-const result = returnFirstElement<number>(arrayNum);
-console.log(result);
-
-//devuelva el ultimo elemento de un array
-const returnLastElement = <T,> (array:T[]):T =>{
-    return array[array.length-1];    
-}
-const result2 =returnLastElement <string>(arrayStr)
-console.log(result2);
-
-//devuelva un array completo inverso 
-const returnReverseArray = <T,>(array:T[]):T[]=> {
-    return (array).reverse ();
-}
-
-const result3 = returnReverseArray <boolean>(arrayBln)
-console.log(result3);
-
-//
-
-
-const wrapInTripleArray = <T,>(value:T):T[]=>{
-    return [value,value,value];
-}
-console.log(wrapInTripleArray<number>(5));
 
 
 
-
-
-    
