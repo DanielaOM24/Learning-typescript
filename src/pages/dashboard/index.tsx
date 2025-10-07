@@ -1,54 +1,40 @@
-import { useEffect, useState } from "react";
-import NextApiResponse from 'next';
-import { getProperties } from '../../services/properties';
-import { responseCookiesToRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import { MyContext } from "@/context/Context";
+import { Button, Switch } from "@heroui/react";
+import { useRouter } from "next/router";
+import { useContext} from "react";
 
-interface propertyProps{
-  _id:string
-  name: string,
-  value:number,
-  img:string
-}
+const Dashboard = () => {
+    const router = useRouter();
 
-interface dataProperties {
-  ok: string,
-  miInfo : propertyProps[]
-}
+    const { userLogged, setIsActive, isActive,setIsSelected,isSelected} = useContext(MyContext);
+    
 
-export default function Home() {
-  const [dataProperties, setDataProperties] = useState({} as dataProperties);
-  
+    console.log(userLogged)
 
-  const handleClick = async() => {
-    const response = await(getProperties());
-    setDataProperties(response);
-  };
-  useEffect(()=>{
-    handleClick()
-    const fechData=async() => {
-      const response = await getProperties();
-      setDataProperties(response);
+    const handleClick = () => {
+        console.log(userLogged)
+        setIsActive(!isActive)
+        router.back();
     };
-    fechData()
 
-  })
+    return (
+        <>
+            <div>Este es el dashboard</div>
+            <div>El ususario {userLogged.name} esta logueado</div>
+            <div className="flex justify-center items-center mt-5">
+            <Switch
+                size="sm"
+                color="success"
+                isSelected={isSelected}
+                onValueChange={setIsSelected}>Airplane mode
+                
+            </Switch>
+            </div>
+            <Button onPress={handleClick} className="mt-7" color="danger">
+                regresar
+            </Button>
+        </>
+    );
+};
 
-
-  };
-
-  return (
-    <main className="main-container">
-      <h1>HELLO! ✨</h1>
-      <h2>List of properties 🤍</h2>
-      <div>{result}</div>
-      <button
-        onClick={() => {
-          handClick();
-        }}
-        className="bg-cyan-500 miButton"
-      >
-        
-      </button>
-    </main>
-  );
-}
+export default Dashboard;

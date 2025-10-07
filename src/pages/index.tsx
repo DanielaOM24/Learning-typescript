@@ -1,78 +1,72 @@
 import { useRouter } from "next/router";
-import { users } from "../utils/users";
-import { ToastContainer, toast } from 'react-toastify';
-import { MiButton } from "@/components/button/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MyContext } from "@/context/Context";
+import { notification } from "@/helpers/utils";
+import { Button, Input, Switch, Card, CardBody } from "@heroui/react";
 
+const userLogueado = {
+    name: "daniela",
+    role: "admin",
+    isActive: true,
+    date: "24/12/2025",
+};
 
-const Login = () => {
+export default function Home() {
     const [user, setUser] = useState("");
-    const [password, setPassword] = useState("");
-
+    const [pass, setPass] = useState("");
+    const { setUserLogged, setIsActive, isActive,isSelected,setIsSelected } = useContext(MyContext);
     const router = useRouter();
 
-
-    const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUser(e.target.value);
-        };
-
-    const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
-
-    const handleClick = () => {
-
-        toast.error('🦄!', {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark"
-            });
-        console.log("Se hizo click con:", user, password);
-
-        // Buscar si las credenciales están en USERS
-        const foundUser = users.find(
-            (u) => u.name === user && u.password === password
-        );
-
-        if (foundUser) {
-            console.log("Login exitoso:", foundUser.name);
-            router.push("/dashboard"); // va al index.tsx
+    const handleClick = async () => {
+        if (user === "daniela" && pass === "123456") {
+            setUserLogged(userLogueado);
+            notification("Login exitoso", "success");
+            router.push("/dashboard");
         } else {
-            console.log("Credenciales incorrectas");
+            notification("Usuario o contraseña incorrectos", "error");
         }
     };
 
     return (
-        <div className="login-container">
-            <div className="login-box">
-                <h1>Mi app</h1>
-                <h3>Ingresa usuario y contraseña</h3>
+        <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+            <Card className="w-[380px] shadow-lg p-6">
+                <CardBody>
+                    <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">Login</h2>
 
-                <label>Usuario</label>
-                <input value={user} onChange={handleChangeUser} type="text" />
+                    <div className="space-y-4">
+                        <Input
+                            label="User"
+                            placeholder="Enter your user"
+                            type="text"
+                            onChange={(e) => setUser(e.target.value)}
+                        />
 
-                <label>Contraseña</label>
-                <input value={password} onChange={handleChangePassword} type="password" />
+                        <Input
+                            label="Password"
+                            placeholder="Enter your password"
+                            type="password"
+                            onChange={(e) => setPass(e.target.value)}
+                        />
 
-                <button className="login-box__buton" onClick={handleClick}>Ingresar</button>
-                <MiButton text= {"guardar"} icon={"S"} />
-                < ToastContainer/>
-                
-            </div>
+                        <Button
+                            onPress={handleClick}
+                            color="primary"
+                            className="w-full mt-3"
+                        >
+                            Login
+                        </Button>
+
+                        <div className="flex justify-center items-center mt-5">
+                            <Switch
+                                size="sm"
+                                color="success"
+                                isSelected={isSelected}
+                                onValueChange={setIsSelected}>
+                            </Switch>
+                        </div>
+                    </div>
+                </CardBody>
+            </Card>
         </div>
     );
-};
-
-
-export default Login;
-
-
-
-
-
+}
