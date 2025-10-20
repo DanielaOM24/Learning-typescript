@@ -5,12 +5,12 @@ import React from 'react'
 const Newview = () => {
   return (
     <div className=''>
-      <Card 
+      <Card
       color='green'
-      tittle= "search engine optimization"
+      title= "search engine optimization"
       imageUrl= "imagen"
       description= "string">
-      </Card> 
+      </Card>
     </div>)
 }
 

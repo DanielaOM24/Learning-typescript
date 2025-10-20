@@ -4,10 +4,8 @@
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
 
-
 @import "./components/Card.css";
-
-:root {
+@import "./components/modal.css": root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -40,7 +38,7 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center; /* Centra horizontal */
-  align-items: center;     /* Centra vertical */
+  align-items: center; /* Centra vertical */
   background: linear-gradient(135deg, #8db3df, #a5e0eb);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -111,18 +109,14 @@ body {
   background: #3597af;
 }
 
-.components--button{
-  padding:  5px;
+.components--button {
+  padding: 5px;
   border-radius: 14px;
   background-color: #8db3df;
   border: 1px solid #0a0a0a;
-
 }
-.components--button:hover{
+.components--button:hover {
   color: #0a0a0a;
   cursor: pointer;
   background-color: #ededed;
 }
-
-
-
