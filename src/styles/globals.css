@@ -1,11 +1,12 @@
 @import "tailwindcss";
+@import "./components/Card.css";
+@import "./components/modal.css";
 
 @plugin './hero.ts';
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
 
-@import "./components/Card.css";
-@import "./components/modal.css": root {
+:root {
   --background: #ffffff;
   --foreground: #171717;
 }

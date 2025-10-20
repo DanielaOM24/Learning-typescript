@@ -1,28 +1,31 @@
-.modalContainer{
+.modalContainer {
     position: absolute;
     top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    height:500px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
     width: 500px;
-    background-color: blanchedalmond;
-    border-radius:20px; ;
-    padding:20px ;
+    background-color: rgb(8, 8, 7);
+    border-radius: 20px;
+    padding: 20px;
 }
-.modalContainer_header{
+
+.modalContainer_header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
 }
-.modalContainer_footer{
+
+.modalContainer_footer {
     display: flex;
     justify-content: space-between;
     position: fixed;
-    bottom: 0%;
+    bottom: 20px;
 }
-.modalContainer_buttons{
+
+.modalContainer_buttons {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     position: fixed;
     right: 20px;
 }

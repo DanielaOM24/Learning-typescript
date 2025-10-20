@@ -18,11 +18,16 @@ const Dashboard = () => {
         router.back();
     };
     const handleClose = () =>{
-        console.log("c lose");
-
+        console.log("close");
+    }
+    const handleCancel = () =>{
+        console.log("cancel");
 
     }
+    const handleSave = () => {
+        console.log("save");
 
+    }
     return (
         <>
             <div>Este es el dashboard</div>
@@ -39,9 +44,14 @@ const Dashboard = () => {
             <Button onPress={handleClick} className="mt-7" color="danger">
                 regresar
             </Button>
-            <Modal title="modal prueba" onClose={handleClose}
+            <Modal
+            title="modal prueba"
+            children ="tarjeta"
+            onClose={handleClose}
+            description="esta es mi prueba"
+            onCancel={handleCancel}
+            onSave={handleSave}
         >
-
             </Modal>
         </>
 
