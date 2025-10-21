@@ -1,3 +1,5 @@
+import { Button } from "@heroui/react";
+
 interface ModalProps {
     title: string;
     onClose: () => void;
@@ -37,8 +39,9 @@ export const Modal = ({
             <footer className="modalContainer_footer">
                 <div> {description} </div>
                 <div className="modalContainer_buttons">
-                    <button onClick={onCancel}>cancel</button>
-                    <button onClick={onSave}>Save </button>
+                    <Button color="danger" variant="light" onClick={onCancel}>cancel</Button>
+                    <Button color="danger" variant="light" onClick={onSave}>Save </Button>
+
                 </div>
             </footer>
         </div>
