@@ -1,46 +1,35 @@
 import React from "react";
-import Image from "next/image";
-
-interface Cardprops {
-color: "green" | "white" | "black";
-title: string;
-imageUrl: string;
-description: string;
+interface CardProps {
+    color: "green" | "white" | "black";
+    title: string;
+    imageUrl: string;
+    description: string;
+    children?: React.ReactNode
 }
 
-export const Card = ({ color }: Cardprops) => {
-console.log(color);
-
-return (
-<div
-    className={
-    color === "green"
-        ? "card-green"
-        : color === "white"
-        ? "card-white"
-        : color === "black"
-        ? "card-black"
-        : ""
-    }
->
-    <div className="card__leftSide"></div>
-    <div className="card__leftSide--tittle">
-    Search engine <br />
-    optimizacion
-    </div>
-    <div className="card__leftSide link"></div>
-    <div className="card__leftSide--icon"></div>
-    <div className="card__leftSide--text"></div>
-
-    <div className="card__rigthSide">
-    <Image
-        className="card__rigthSide__Image"
-        src="imagen"
-        alt="200"
-        width={200}
-        height={200}
-    />
-    </div>
-</div>
-);
+export const Card = ({ color, title, imageUrl, description, children }: CardProps) => {
+    return (
+        <div
+            className={
+                color === "green"
+                    ? "card card-green"
+                    : color === "white"
+                        ? "card card-white"
+                        : color === "black"
+                            ? "card card-black"
+                            : ""
+            }
+        >
+            <div className="card__leftSide">
+                <div>
+                    {children}
+                </div>
+                <div className="card__leftSide--title font-bold">{title}</div>
+                <div className="card__leftSide--subtitle">{description}</div>
+            </div>
+            <div className="card__rightSide">
+                <img className="card__rightSide--image" alt="asd" src={imageUrl} />
+            </div>
+        </div>
+    );
 };
